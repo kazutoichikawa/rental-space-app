@@ -1,12 +1,16 @@
 <template>
   <div id="app">
+    <div class="flex">
     <div v-for="rental_space in rental_spaces" :key="rental_space.id">
-      レンタルスペース名：{{rental_space.name}}
-      郵便番号：{{rental_space.postal_code}}
-      住所：{{rental_space.address}}
-      建物名：{{rental_space.building}}
-      詳細：{{rental_space.detail}}
-      収容人数：{{rental_space.capacity}}
+      <div class="wrapper">
+        <div>画像を表示</div>
+        <div>レンタルスペース名：{{rental_space.name}}</div>
+        <div>郵便番号：{{rental_space.postal_code}}</div>
+        <div>住所：{{rental_space.address + rental_space.building}}</div>
+        <div>収容人数：{{rental_space.capacity}}人</div>
+        <div>料金：{{rental_space.price}}円/1時間</div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -34,9 +38,17 @@ export default {
 }
 </script>
 
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
+<style lang="scss" scoped>
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 240px;
+  border: 1px solid #666666;
+  margin: 5px 5px;
+  padding: 8px;
 }
 </style>
