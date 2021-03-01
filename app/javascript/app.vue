@@ -1,9 +1,12 @@
 <template>
   <div id="app">
+    <Header />
     <div class="flex">
     <div v-for="rental_space in rental_spaces" :key="rental_space.id">
       <div class="wrapper">
-        <div>画像を表示</div>
+        <div class='room-image-wrapper'>
+          <img src='./src/image/room-image.png' alt="room image" class="room-image">
+        </div>
         <div>レンタルスペース名：{{rental_space.name}}</div>
         <div>郵便番号：{{rental_space.postal_code}}</div>
         <div>住所：{{rental_space.address + rental_space.building}}</div>
@@ -17,8 +20,11 @@
 
 <script>
 import axios from 'axios';
-
+import Header from './components/Header.vue'
 export default {
+   components: { 
+　　Header
+　},
   data: function () {
     return {
       rental_spaces: "rental_spaces"
@@ -50,5 +56,12 @@ export default {
   border: 1px solid #666666;
   margin: 5px 5px;
   padding: 8px;
+}
+
+.room-image-wrapper {
+  text-align: center;
+}
+.room-image {
+  width: 235px;
 }
 </style>
